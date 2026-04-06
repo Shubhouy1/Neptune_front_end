@@ -1,0 +1,366 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    overflow-x: hidden;
+}
+.main{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    background-color: #EBEBEB;
+    position: relative;
+    
+    
+
+}
+.sidebar{
+    padding-left: 40px;
+    padding-top: 20px;
+    padding-right: 40px;
+    background-color: #ffff;
+    min-height: 100vh;
+    opacity: 1;
+    border-width: 1px;
+    display: flex;
+    flex-direction: column;
+    gap : 10px;
+
+}
+.neptune{
+    width: 70%;
+    height: 7%;
+    opacity: 1;
+    color: #1F4451;
+    padding-bottom: 10px;
+  
+}
+.name-box{
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    border-radius: 6px;
+    border: 0.5px solid #B5BDCD;
+    display: flex;
+    align-items: center;
+}
+.logo{
+width: 41px;
+height: 41px;
+padding: 5px;
+
+}
+.name{
+    font-family: 'Spline Sans';
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    width: 183px;
+    height: 38px;
+    opacity: 1;
+    color: #2A2A2A;
+    display: flex;
+    flex-direction: column;
+
+}
+#type-display{
+    width: 159px;
+    height: 0px;
+    opacity: 1;
+    font-family: 'Spline Sans';
+    font-weight: 400;
+    font-size: 10px;
+    color: #626D82;
+    padding-bottom: 5px;
+}
+.menu{
+    padding-left: 10px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.menu-items{
+    display: flex;
+    gap :15px;
+    align-items: center;
+    padding: 10px;
+}
+.menu-items p{
+    padding-top: 4px;
+    font-family: Spline Sans;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #626D82;
+}
+.document{
+    display: flex;
+    gap :12px;
+    padding: 8px;
+    border-radius: 6px;
+    background-color: #D3F7B5;
+}
+.document p{
+    padding-top: 3px;
+    font-family: Spline Sans;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #1F4451;
+}
+.help{
+    
+    width: 100%;
+    height:auto;
+    padding-top: 45px;
+    padding-bottom: 0px;
+   
+}
+.help h2{
+    font-family: Spline Sans;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #1F4451;
+}
+.help p{
+    font-family: 'Spline Sans';
+    font-weight: 600;
+    font-size: 12px; 
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #626D82;
+    padding-bottom: 10px;
+} 
+.btn{
+    width: 41%;
+    height: 20%;
+    opacity: 1;
+    border-radius: 5px;
+    background-color: #1F4451;
+    padding-bottom: 30px;
+    display: flex;
+    padding: 15px;
+}
+.btn p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Spline Sans;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #FFFFFF;
+    
+}
+.content{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    min-height: 100vh;
+}
+.home-bar{
+    display: flex;
+    gap : 10px;
+}
+.home-bar p{
+    font-family: 'Spline Sans';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #436D7C;
+}
+.home-bar img{
+    color: #D1D5DB;
+}
+.header{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.header h1{
+    font-family: 'Zin Display', serif;
+    font-weight: 400;
+    font-size: 23px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+.search-box{
+    width: 22%;
+    height: 30px;
+    background-color:  white;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    border: #B5BDCD solid 0.5px;
+    border-radius: 5px;
+}
+.search-box input::placeholder{
+   
+    font-family: 'Spline Sans';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0;
+    color: #B5BDCD;
+
+}
+#search{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.neptune-table{
+    width:100%;
+    height:auto;
+    background: white;
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+.neptune-table tr{
+    border: 1px solid #eee;
+}
+
+.neptune-table th{
+    color:#000000;
+    text-align:left;
+
+    padding: 10px;
+    font-family: 'Spline Sans';
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 140%;
+    letter-spacing: 0%;
+
+
+}
+
+.neptune-table td{
+    padding:10px;
+    text-align:left;
+    font-family: 'Spline Sans';
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 140%;
+    letter-spacing: 0%;
+    color: #436D7C;
+    height: 50px;
+    
+}
+.first-column{
+    display: flex;
+    gap: 25px;
+
+}
+.button {
+    width: 104px;
+    height: 24px;
+    background-color: #FFFFFF;
+    color: #626D82;
+    font-weight: 500;
+    border: #B5BDCD 1px solid;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter';
+}
+.status-bar {
+    background-color: #436D7C;
+    padding: 6px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    border-radius: 22px;
+    color: #ffff;
+    width: 120px;
+}
+
+.completed{
+    background-color:#D3F7B5;
+    padding: 6px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    border-radius: 22px;
+    color: #1F4451;
+    width: 100px;
+}
+.pending{
+    background-color: #E8ECF1;
+    padding: 6px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    border-radius: 22px;
+    color: #626D82;
+    width: 100px;
+}
+.status{
+    display: flex;
+    flex-direction: column;
+    gap :0px;
+}
+.pending-first{
+    color :#B5BDCD;
+}
+.last-column{
+    display: flex;
+    gap :3px;
+    justify-content: end;
+}
+.icons{
+    display: flex;
+    gap: 2px;
+}
+.drop-icon{
+    width: 80%;
+    height: 80%;
+    align-self: center;
+    padding-top: 2px;
+}
+.first-column-th{
+    display: flex;
+    gap:11px;
+}
+.date{
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+.drop-icon-1{
+    width:30%;
+    height: 30%;
+}
