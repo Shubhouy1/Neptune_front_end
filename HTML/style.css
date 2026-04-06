@@ -5,18 +5,11 @@
     
 }
 
-body{
-    overflow-x: hidden;
-}
 .main{
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 1fr;
     background-color: #EBEBEB;
-    position: relative;
-    
-    
-
 }
 .sidebar{
     padding-left: 40px;
@@ -217,7 +210,7 @@ padding: 5px;
    
     font-family: 'Spline Sans';
     font-weight: 400;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 140%;
     letter-spacing: 0;
     color: #B5BDCD;
@@ -229,18 +222,18 @@ padding: 5px;
     border: none;
     outline: none;
 }
-.neptune-table{
+.doc-table{
     width:100%;
     height:auto;
     background: white;
     border-radius: 10px;
     border-collapse: collapse;
 }
-.neptune-table tr{
+.doc-table tr{
     border: 1px solid #eee;
 }
 
-.neptune-table th{
+.doc-table th{
     color:#000000;
     text-align:left;
 
@@ -254,7 +247,7 @@ padding: 5px;
 
 }
 
-.neptune-table td{
+.doc-table td{
     padding:10px;
     text-align:left;
     font-family: 'Spline Sans';
