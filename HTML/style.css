@@ -9,12 +9,12 @@
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 1fr;
-    background-color: #EBEBEB;
+    background-color: #F3F2F1;
 }
 .sidebar{
-    padding-left: 40px;
+    padding-left: 20px;
     padding-top: 20px;
-    padding-right: 40px;
+    padding-right: 20px;
     background-color: #ffff;
     min-height: 100vh;
     opacity: 1;
@@ -366,6 +366,6 @@ padding: 5px;
 #checkbox{
     width: 13px;
     height: 13px;
-    color: black;
+
     align-self: center;
 }
