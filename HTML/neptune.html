@@ -10,6 +10,32 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+          
+
+    <div class ="overlay">
+         <div class="doc-add-form">
+            <form action ="" class="form">
+                <h2>Add Document</h2>
+                <label for="doc-name">Document Name</label><br>
+                <input type="text" id="doc-name" name="doc-name" placeholder="Enter document name"><br>
+                <label for="status>">Status</label><br>
+                <select id="status" name="status">
+                    <option value="Need-signing">Need Signing</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>   
+                    </select>   
+                    <div class ="pending-wrapper">
+                    <label for="pending">If pending, how many people are waiting for?</label><br>
+                    <input type="number" id="pending" name="pending" placeholder="Enter number of people waiting" min="0">
+                    </div>
+                    <div class="form-actions">
+                         <button type="button" class="cancel-btn">Cancel</button>
+                         <button type="submit" class="submit-btn">Add</button>
+            </div>
+            </form>
+        </div>
+ 
+    </div>
     <div class="main">
         <aside class="sidebar">
             <div class ="neptune">
@@ -57,12 +83,19 @@
                 <p>Home</p>
                  <img src="../Images/Vector.svg" alt="">
                  <p style="color: #B5BDCD;">Documents</p>
-            </div>
+            </div class="search-add">
             <div class ="header">
                 <h1>My Documents</h1>
+                <div class="add-search">
+                   <div class="add-btn">
+                    <button class="add-button" onclick="showPopUp()">
+                        <p>+ Add</p></button>
+                </div>
+                
                 <div class="search-box">
                     <input type="text" name="search" id="search" placeholder="Search documents" >
                     <img src="../Images/Layer_1.svg" alt="">
+                </div>
                 </div>
             </div>
                <table class="doc-table">
@@ -220,4 +253,5 @@
         </div>
     </div>
 </body>
+<script src="./script.js"></script>
 </html>

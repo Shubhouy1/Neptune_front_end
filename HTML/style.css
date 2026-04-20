@@ -195,7 +195,7 @@ padding: 5px;
 
 }
 .search-box{
-    width: 22%;
+    width: 70%;
     height: 30px;
     background-color:  white;
     padding-left: 10px;
@@ -368,4 +368,112 @@ padding: 5px;
     height: 13px;
 
     align-self: center;
+}
+.add-button{
+    width: 80px;
+    height: 30px;
+    background-color: #1F4451   ;
+    color: #FFFFFF;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Inter';
+}
+.add-search{
+    display: flex;
+    gap : 10px;
+    
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+    transition: 0.3s ease;
+     opacity: 0;
+}
+.show-overlay{
+    z-index: 1;
+    opacity: 1;
+}
+.form {
+    background-color: #FFFFFF;
+    padding: 25px 30px;
+    width: 320px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-family: 'Inter', sans-serif;
+}
+
+
+.form h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1F4451;
+}
+
+.form label {
+    font-size: 13px;
+    color: #626D82;
+    font-weight: 500;
+}
+
+.form input,
+.form select {
+    width: 100%;
+    height: 35px;
+    padding: 6px 10px;
+    border: 1px solid #B5BDCD;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    transition: 0.2s ease;
+    background-color: #F3F2F1;
+
+}
+.form input:focus,
+.form select:focus {
+    border-color: #1F4451;
+    box-shadow: 0 0 0 2px rgba(31, 68, 81, 0.1);
+}
+
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+ .cancel-btn {
+    background: transparent;
+    border: 1px solid #B5BDCD;
+    color: #626D82;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ .submit-btn {
+    background-color: #1F4451;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pending-wrapper{
+    display: none;
 }
