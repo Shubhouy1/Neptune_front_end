@@ -435,7 +435,6 @@ padding: 5px;
 .form input,
 .form select {
     width: 100%;
-    height: 35px;
     padding: 6px 10px;
     border: 1px solid #B5BDCD;
     border-radius: 6px;

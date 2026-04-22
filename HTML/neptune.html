@@ -20,13 +20,13 @@
                 <input type="text" id="doc-name" name="doc-name" placeholder="Enter document name"><br>
                 <label for="status>">Status</label><br>
                 <select id="status" name="status">
-                    <option value="Need-signing">Need Signing</option>
-                    <option value="pending">Pending</option>
-                    <option value="completed">Completed</option>   
+                    <option value="Need Signing">Need Signing</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>   
                     </select>   
                     <div class ="pending-wrapper">
                     <label for="pending">If pending, how many people are waiting for?</label><br>
-                    <input type="number" id="pending" name="pending" placeholder="Enter number of people waiting" min="0">
+                    <input type="number" id="pendingNumber" name="pending" placeholder="Enter number of " min="0">
                     </div>
                     <div class="form-actions">
                          <button type="button" class="cancel-btn">Cancel</button>
@@ -115,7 +115,7 @@
 
                     <td>
                         <div class="status">
-                        <span class="status-bar blue">Need Signing</span>
+                        <span class="status-bar">Need Signing</span>
                         </div>
                     </td>
 
@@ -161,7 +161,7 @@
                         <td>
                             <div class="status">
                             <span class="pending">Pending</span><br>
-                        <i>  <small class="pending-first">Waiting for</small><small> 2 people</small></i>
+                           <i><small class="pending-first">Waiting for</small><small> 2 people</small></i>
                             </div>
                         </td>
                         <td>
