@@ -53,9 +53,12 @@ form.addEventListener("submit",(e)=>{
         buttonText: buttonText
     }
     addDocument(docObject);
+    let docs = JSON.parse(localStorage.getItem("documents")) ||[];
+    docs.push(docObject);
+    localStorage.setItem("documents",JSON.stringify(docs));
     form.reset();
     document.querySelector(".overlay").classList.remove("show-overlay");    
-      pendingSelect.style.display="none";
+    pendingSelect.style.display="none";
     
    });
  function addDocument(docObject){
@@ -81,8 +84,13 @@ form.addEventListener("submit",(e)=>{
                     <button class="button">
                     ${docObject.buttonText}
                     </button>
-                    <img src="../Images/more_vert_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 2.svg" alt="">
+                    <img src="../Images/more_vert_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 2.svg" alt="" class="three-dots">
                     </div>
+                    <div class="edit-delete-menu">
+                        <button class="update edit-btn">Edit</button>
+                        <button class="update delete-btn">Delete</button>
+                    </div>
+
                     </td>
 
     `;
@@ -94,4 +102,21 @@ form.addEventListener("submit",(e)=>{
         document.querySelector(".overlay").classList.remove("show-overlay");
         pendingSelect.style.display="none";
     })
+
+document.addEventListener("click", (e) => {
+    if (e.target.classList.contains("three-dots")) {
+        document.querySelectorAll(".edit-delete-menu")
+            .forEach(menu => menu.classList.remove("show-menu"));
+        const menu = e.target.closest("td").querySelector(".edit-delete-menu");
+        menu.classList.add("show-menu");
+    }
+    else {
+        document.querySelectorAll(".edit-delete-menu")
+            .forEach(menu => menu.classList.remove("show-menu"));
+    }
+});
+window.addEventListener("DOMContentLoaded",()=>{
+        const docs =JSON.parse(localStorage.getItem("documents"))||[];
+        docs.forEach(doc=>addDocument(doc));
+     });
 
