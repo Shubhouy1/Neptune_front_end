@@ -4,19 +4,25 @@
     box-sizing: border-box;
     
 }
+html, body{
+    height: 100%;
+    overflow: hidden;
+}
 
 .main{
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 1fr;
     background-color: #F3F2F1;
+    height: 100%;
+    overflow: hidden;
 }
 .sidebar{
     padding-left: 20px;
     padding-top: 20px;
     padding-right: 20px;
     background-color: #ffff;
-    min-height: 100vh;
+    height: 100vh;
     opacity: 1;
     border-width: 1px;
     display: flex;
@@ -163,7 +169,8 @@ padding: 5px;
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 20px;
-    min-height: 100vh;
+    height: 100%;
+    overflow-y: auto;
 }
 .home-bar{
     display: flex;
@@ -222,9 +229,16 @@ padding: 5px;
     border: none;
     outline: none;
 }
+.table-container{
+    max-height: 370px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-radius: 10px;
+    background-color: white;
+}
 .doc-table{
     width:100%;
-    height:auto;
+    height:100%;
     background: white;
     border-radius: 10px;
     border-collapse: collapse;
@@ -236,15 +250,16 @@ padding: 5px;
 .doc-table th{
     color:#000000;
     text-align:left;
-
+    position :sticky;
+    top:0;
     padding: 10px;
     font-family: 'Spline Sans';
     font-weight: 600;
     font-size: 14px;
     line-height: 140%;
     letter-spacing: 0%;
-
-
+    background-color: #FFFFFF;
+    z-index :0;
 }
 
 .doc-table td{
@@ -330,6 +345,7 @@ padding: 5px;
 .last-column{
     display: flex;
     gap :3px;
+    position: relative;
     justify-content: end;
 }
 .icons{
@@ -363,7 +379,7 @@ padding: 5px;
     height: 80%;
 }
 
-#checkbox{
+.checkbox{
     width: 13px;
     height: 13px;
 
@@ -401,10 +417,10 @@ padding: 5px;
     justify-content: center;
     z-index: -1;
     transition: 0.3s ease;
-     opacity: 0;
+    opacity: 0;
 }
 .show-overlay{
-    z-index: 1;
+    z-index: 1000;
     opacity: 1;
 }
 .form {
@@ -478,10 +494,11 @@ padding: 5px;
 }
 
 .edit-delete-menu{
-    display: flex;
+    display: none;
     flex-direction: column;
     position: absolute;
-    right: 63px;
+    right: 12px;
+    top:18px;
     background-color: #fff;
 
     border: 1px solid #e0e0e0;
@@ -495,7 +512,9 @@ padding: 5px;
 }
 .show-menu{
     opacity: 1;
-    z-index: 1;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
 }
 
 .update{

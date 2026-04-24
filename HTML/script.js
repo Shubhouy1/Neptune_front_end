@@ -1,7 +1,11 @@
 function showPopUp(){
     document.querySelector(".overlay").classList.add("show-overlay");
 }
-
+document.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("overlay")){
+        document.querySelector(".overlay").classList.remove("show-overlay");   
+    }
+})
 const pendingSelect = document.querySelector(".pending-wrapper");
 const statusSelect = document.getElementById("status");
 statusSelect.addEventListener("change", function() {
@@ -43,7 +47,7 @@ form.addEventListener("submit",(e)=>{
     const dateString = date.toLocaleDateString();
     const timeString = date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
     const docObject = {
-        docId : Date.now(),
+        docId : editId ? editId : Date.now(),
         name: docName,
         status: docStatus,
         pendingText: pendingText,
@@ -52,12 +56,23 @@ form.addEventListener("submit",(e)=>{
         className: className,
         buttonText: buttonText
     }
-    addDocument(docObject);
+   
     let docs = JSON.parse(localStorage.getItem("documents")) ||[];
+    if(editId){
+        docs = docs.map((doc)=>{
+           return doc.docId ==editId ? docObject : doc;
+        });
+        document.querySelector(`tr[data-doc-id="${editId}"]`).remove();
+
+        editId = null;
+    }else{
     docs.push(docObject);
+    }   
     localStorage.setItem("documents",JSON.stringify(docs));
-    form.reset();
+    addDocument(docObject);
+   
     document.querySelector(".overlay").classList.remove("show-overlay");    
+    form.reset();
     pendingSelect.style.display="none";
     
    });
@@ -66,7 +81,7 @@ form.addEventListener("submit",(e)=>{
     const tr = document.createElement("tr");
     tr.setAttribute("data-doc-id", docObject.docId);
     tr.innerHTML = `
-                    <td><div class ="first-column"><input type="checkbox" id="checkbox">${docObject.name}</div></td>
+                    <td><div class ="first-column"><input type="checkbox" class="checkbox">${docObject.name}</div></td>
 
                     <td>
                         <div class="status">
@@ -85,14 +100,13 @@ form.addEventListener("submit",(e)=>{
                     ${docObject.buttonText}
                     </button>
                     <img src="../Images/more_vert_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 2.svg" alt="" class="three-dots">
-                    </div>
-                    <div class="edit-delete-menu">
+                       <div class="edit-delete-menu">
                         <button class="update edit-btn">Edit</button>
                         <button class="update delete-btn">Delete</button>
                     </div>
-
+                    </div>
+                    
                     </td>
-
     `;
     tbody.appendChild(tr);
  }
@@ -118,5 +132,58 @@ document.addEventListener("click", (e) => {
 window.addEventListener("DOMContentLoaded",()=>{
         const docs =JSON.parse(localStorage.getItem("documents"))||[];
         docs.forEach(doc=>addDocument(doc));
-     });
+});
 
+document.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("delete-btn")){
+        deleteDocument(e);
+    }
+});
+
+function deleteDocument(e){
+    const row = e.target.closest("tr");
+    const docID = Number(row.getAttribute("data-doc-id"));
+    row.remove();
+    let docs = JSON.parse(localStorage.getItem("documents"))||[];
+    docs=docs.filter((doc)=>doc.docId!==docID)
+    localStorage.setItem("documents",JSON.stringify(docs));
+}
+
+const searchInput = document.getElementById("search");
+searchInput.addEventListener("input",()=>{
+    searchDocuments(searchInput.value)
+});
+function searchDocuments(query){
+    const rows = document.querySelectorAll(".doc-table tbody tr");
+    let found = false;
+
+    query = query.toLowerCase();
+
+    rows.forEach(row => {
+        const docName = row.querySelector(".first-column").innerText.toLowerCase();
+
+        if(docName.includes(query)){
+            row.style.display = "";
+            found = true;
+        } else {
+            row.style.display = "none";
+        }
+    });
+
+    if(!found){
+        console.log("No results found");
+    }
+} 
+let editId = null;
+document.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("edit-btn")){
+        const row = e.target.closest("tr")
+        editId = Number(row.getAttribute("data-doc-id"));
+        const name = row.querySelector(".first-column").textContent;
+        const status = row.querySelector(".status span").textContent;
+        console.log(status + name)
+        document.getElementById("doc-name").value = name;
+        document.getElementById("status").value =status;
+        showPopUp();
+    }
+})
