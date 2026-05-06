@@ -242,6 +242,7 @@ padding: 5px;
     background: white;
     border-radius: 10px;
     border-collapse: collapse;
+    z-index: 9999;
 }
 .doc-table tr{
     border: 1px solid #eee;
@@ -418,10 +419,12 @@ padding: 5px;
     z-index: -1;
     transition: 0.3s ease;
     opacity: 0;
+    visibility: hidden;
 }
 .show-overlay{
     z-index: 1000;
     opacity: 1;
+    visibility: visible;
 }
 .form {
     background-color: #FFFFFF;
@@ -538,4 +541,16 @@ padding: 5px;
 }
 .delete-btn{
     color: red  ;
+}
+
+.three-dots{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+.menu-items:hover{
+    border-radius: 6px;
+    background-color: #D3F7B5;
+    cursor: pointer;
 }

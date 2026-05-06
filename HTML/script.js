@@ -1,5 +1,17 @@
 function showPopUp(){
-    document.querySelector(".overlay").classList.add("show-overlay");
+    const overlay = document.querySelector(".overlay");
+    const heading = document.querySelector(".form h2");
+    const button = document.querySelector(".submit-btn");
+
+    overlay.classList.add("show-overlay");
+
+    if(editId){
+        heading.textContent = "Edit Document";
+        button.textContent = "Update";
+    } else {
+        heading.textContent = "Add Document";
+        button.textContent = "Add";
+    }
 }
 document.addEventListener("click",(e)=>{
     if(e.target.classList.contains("overlay")){
@@ -21,6 +33,7 @@ form.addEventListener("submit",(e)=>{
     const docName = document.getElementById("doc-name").value;
     const docStatus= document.getElementById("status").value;
     const pendingNumber = document.getElementById("pendingNumber").value;
+    
     if(docName.trim() === ""){
         alert("Please enter a document name.");
         return;
@@ -32,7 +45,7 @@ form.addEventListener("submit",(e)=>{
     if(docStatus==="Pending"){
     className="pending";
     buttonText="Preview";
-    pendingText =`<i><small class="pending-first">Waiting for</small><small> ${pendingNumber} ${label}</small></i>`
+    pendingText =`<i><small class="pending-first">Waiting for</small><small><span class="pnum"> ${pendingNumber}</span> ${label}</small></i>`
     }
     if(docStatus==="Completed"){
     className="completed";
@@ -59,24 +72,36 @@ form.addEventListener("submit",(e)=>{
    
     let docs = JSON.parse(localStorage.getItem("documents")) ||[];
     if(editId){
-        docs = docs.map((doc)=>{
-           return doc.docId ==editId ? docObject : doc;
-        });
-        document.querySelector(`tr[data-doc-id="${editId}"]`).remove();
+    docs = docs.map(doc =>
+        doc.docId === editId ? docObject : doc
+    );
 
-        editId = null;
+    const row = document.querySelector(`tr[data-doc-id="${editId}"]`);
+
+    row.querySelector(".first-column").innerHTML =
+        `<input type="checkbox" class="checkbox">${docObject.name}`;
+
+    row.querySelector(".status").innerHTML =
+        `<span class="${docObject.className}">${docObject.status}</span><br>${docObject.pendingText}`;
+
+    row.querySelector(".date").innerHTML =
+        `<span>${docObject.date}</span><br><small>${docObject.time}</small>`;
+
+    row.querySelector(".button").textContent = docObject.buttonText;
+
+    editId = null;
     }else{
     docs.push(docObject);
-    }   
-    localStorage.setItem("documents",JSON.stringify(docs));
     addDocument(docObject);
-   
+   }
+    localStorage.setItem("documents",JSON.stringify(docs));
+
     document.querySelector(".overlay").classList.remove("show-overlay");    
     form.reset();
     pendingSelect.style.display="none";
     
    });
- function addDocument(docObject){
+function addDocument(docObject){
     const tbody = document.querySelector(".doc-table tbody");
     const tr = document.createElement("tr");
     tr.setAttribute("data-doc-id", docObject.docId);
@@ -181,8 +206,18 @@ document.addEventListener("click",(e)=>{
         editId = Number(row.getAttribute("data-doc-id"));
         const name = row.querySelector(".first-column").textContent;
         const status = row.querySelector(".status span").textContent;
+        if(status==="Pending"){
+        const pendingNum = row.querySelector(".pnum").textContent;
+        const check=document.getElementById("pendingNumber").value =Number(pendingNum);
+        console.log("check pen",check);
+        pendingSelect.style.display = "block";
+         console.log(pendingNum)
+    }
+        
         console.log(status + name)
         document.getElementById("doc-name").value = name;
+        document.querySelector(".form h2").textContent = "Edit Document";
+        console.log("inside edit")
         document.getElementById("status").value =status;
         showPopUp();
     }
